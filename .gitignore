@@ -1,0 +1,9 @@
+# Artefatos de build e arquivos locais
+build/
+dist/
+.godot/
+.mono/
+*.tmp
+*.log
+Thumbs.db
+.DS_Store
