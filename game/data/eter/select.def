@@ -1,0 +1,9 @@
+[Characters]
+simon, stages/lab.def, order=1
+techblade, stages/lab.def, order=1
+[ExtraStages]
+stages/lab.def
+[Options]
+arcade.maxmatches = 1,0,0,0,0,0,0,0,0,0
+team.maxmatches = 0,0,0,0,0,0,0,0,0,0
+

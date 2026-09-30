@@ -1,0 +1,50 @@
+[Info]
+name = "ETER Combat Lab"
+displayname = "COMBAT LAB"
+author = "CODE-ETER-COF"
+mugenversion = 1.0
+[Camera]
+startx = 0
+starty = 0
+boundleft = -140
+boundright = 140
+boundhigh = -40
+boundlow = 0
+verticalfollow = .2
+floortension = 95
+tension = 90
+[PlayerInfo]
+p1startx = -110
+p1starty = 0
+p1facing = 1
+p2startx = 110
+p2starty = 0
+p2facing = -1
+leftbound = -440
+rightbound = 440
+[Bound]
+screenleft = 72
+screenright = 72
+[StageInfo]
+zoffset = 300
+autoturn = 1
+resetBG = 1
+localcoord = 640,360
+[Shadow]
+intensity = 90
+color = 0,0,0
+yscale = .18
+fade.range = -120,-180
+[Reflection]
+reflect = 0
+[Music]
+bgmusic =
+[BGdef]
+spr = lab.sff
+bgclearcolor = 12,18,32
+[BG Lab]
+type = normal
+spriteno = 0,0
+start = 0,-24
+delta = 1,1
+

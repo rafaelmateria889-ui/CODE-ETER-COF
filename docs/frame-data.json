@@ -1,0 +1,302 @@
+{
+  "simon": [
+    {
+      "state": 200,
+      "button": "x",
+      "stance": "S",
+      "startup": 6,
+      "active": 6,
+      "total": 21,
+      "damage": 38,
+      "low": false
+    },
+    {
+      "state": 210,
+      "button": "a",
+      "stance": "S",
+      "startup": 6,
+      "active": 6,
+      "total": 27,
+      "damage": 52,
+      "low": false
+    },
+    {
+      "state": 220,
+      "button": "y",
+      "stance": "S",
+      "startup": 6,
+      "active": 6,
+      "total": 33,
+      "damage": 78,
+      "low": false
+    },
+    {
+      "state": 230,
+      "button": "b",
+      "stance": "S",
+      "startup": 6,
+      "active": 6,
+      "total": 36,
+      "damage": 92,
+      "low": false
+    },
+    {
+      "state": 400,
+      "button": "x",
+      "stance": "C",
+      "startup": 6,
+      "active": 6,
+      "total": 21,
+      "damage": 38,
+      "low": false
+    },
+    {
+      "state": 410,
+      "button": "a",
+      "stance": "C",
+      "startup": 6,
+      "active": 6,
+      "total": 27,
+      "damage": 52,
+      "low": true
+    },
+    {
+      "state": 420,
+      "button": "y",
+      "stance": "C",
+      "startup": 6,
+      "active": 6,
+      "total": 33,
+      "damage": 78,
+      "low": false
+    },
+    {
+      "state": 430,
+      "button": "b",
+      "stance": "C",
+      "startup": 6,
+      "active": 6,
+      "total": 36,
+      "damage": 92,
+      "low": true
+    },
+    {
+      "state": 600,
+      "button": "x",
+      "stance": "A",
+      "startup": 6,
+      "active": 6,
+      "total": 21,
+      "damage": 38,
+      "low": false
+    },
+    {
+      "state": 610,
+      "button": "a",
+      "stance": "A",
+      "startup": 6,
+      "active": 6,
+      "total": 27,
+      "damage": 52,
+      "low": false
+    },
+    {
+      "state": 620,
+      "button": "y",
+      "stance": "A",
+      "startup": 6,
+      "active": 6,
+      "total": 33,
+      "damage": 78,
+      "low": false
+    },
+    {
+      "state": 630,
+      "button": "b",
+      "stance": "A",
+      "startup": 6,
+      "active": 6,
+      "total": 36,
+      "damage": 92,
+      "low": false
+    },
+    {
+      "state": 1000,
+      "name": "Mao do Limiar",
+      "startup": 9,
+      "active": 9,
+      "total": 42,
+      "damage": 100
+    },
+    {
+      "state": 1200,
+      "name": "Ruptura Ascendente",
+      "startup": 9,
+      "active": 9,
+      "total": 42,
+      "damage": 125
+    },
+    {
+      "state": 3000,
+      "name": "Brecha Entre Mundos",
+      "startup": 9,
+      "active": 9,
+      "total": 66,
+      "damage": 255
+    }
+  ],
+  "techblade": [
+    {
+      "state": 200,
+      "button": "x",
+      "stance": "S",
+      "startup": 6,
+      "active": 6,
+      "total": 21,
+      "damage": 38,
+      "low": false
+    },
+    {
+      "state": 210,
+      "button": "a",
+      "stance": "S",
+      "startup": 6,
+      "active": 6,
+      "total": 27,
+      "damage": 52,
+      "low": false
+    },
+    {
+      "state": 220,
+      "button": "y",
+      "stance": "S",
+      "startup": 6,
+      "active": 6,
+      "total": 33,
+      "damage": 78,
+      "low": false
+    },
+    {
+      "state": 230,
+      "button": "b",
+      "stance": "S",
+      "startup": 6,
+      "active": 6,
+      "total": 36,
+      "damage": 92,
+      "low": false
+    },
+    {
+      "state": 400,
+      "button": "x",
+      "stance": "C",
+      "startup": 6,
+      "active": 6,
+      "total": 21,
+      "damage": 38,
+      "low": false
+    },
+    {
+      "state": 410,
+      "button": "a",
+      "stance": "C",
+      "startup": 6,
+      "active": 6,
+      "total": 27,
+      "damage": 52,
+      "low": true
+    },
+    {
+      "state": 420,
+      "button": "y",
+      "stance": "C",
+      "startup": 6,
+      "active": 6,
+      "total": 33,
+      "damage": 78,
+      "low": false
+    },
+    {
+      "state": 430,
+      "button": "b",
+      "stance": "C",
+      "startup": 6,
+      "active": 6,
+      "total": 36,
+      "damage": 92,
+      "low": true
+    },
+    {
+      "state": 600,
+      "button": "x",
+      "stance": "A",
+      "startup": 6,
+      "active": 6,
+      "total": 21,
+      "damage": 38,
+      "low": false
+    },
+    {
+      "state": 610,
+      "button": "a",
+      "stance": "A",
+      "startup": 6,
+      "active": 6,
+      "total": 27,
+      "damage": 52,
+      "low": false
+    },
+    {
+      "state": 620,
+      "button": "y",
+      "stance": "A",
+      "startup": 6,
+      "active": 6,
+      "total": 33,
+      "damage": 78,
+      "low": false
+    },
+    {
+      "state": 630,
+      "button": "b",
+      "stance": "A",
+      "startup": 6,
+      "active": 6,
+      "total": 36,
+      "damage": 92,
+      "low": false
+    },
+    {
+      "state": 1000,
+      "name": "Investida Ignea",
+      "startup": 9,
+      "active": 9,
+      "total": 42,
+      "damage": 100
+    },
+    {
+      "state": 1200,
+      "name": "Corte Ascendente",
+      "startup": 9,
+      "active": 9,
+      "total": 42,
+      "damage": 125
+    },
+    {
+      "state": 3000,
+      "name": "Sobrecarga da Lamina",
+      "startup": 9,
+      "active": 9,
+      "total": 66,
+      "damage": 255
+    },
+    {
+      "state": 1300,
+      "name": "Corte de Pressao",
+      "startup": 9,
+      "active": 9,
+      "total": 42,
+      "damage": 90
+    }
+  ]
+}

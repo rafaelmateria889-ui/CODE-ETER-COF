@@ -1,0 +1,17 @@
+[Info]
+name = "Simon"
+displayname = "Simon"
+versiondate = 09,29,2026
+mugenversion = 1.0
+author = "CODE-ETER-COF / Rafael Materia"
+localcoord = 640,360
+pal.defaults = 1
+[Files]
+cmd = simon.cmd
+cns = simon.cns
+st = simon.cns
+stcommon = common1.cns
+sprite = simon.sff
+anim = simon.air
+sound = simon.snd
+movelist = movelist.dat

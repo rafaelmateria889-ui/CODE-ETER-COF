@@ -1,0 +1,17 @@
+[Info]
+name = "Techblade"
+displayname = "Techblade"
+versiondate = 09,29,2026
+mugenversion = 1.0
+author = "CODE-ETER-COF / Rafael Materia"
+localcoord = 640,360
+pal.defaults = 1
+[Files]
+cmd = techblade.cmd
+cns = techblade.cns
+st = techblade.cns
+stcommon = common1.cns
+sprite = techblade.sff
+anim = techblade.air
+sound = techblade.snd
+movelist = movelist.dat

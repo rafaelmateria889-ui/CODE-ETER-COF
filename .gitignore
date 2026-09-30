@@ -7,3 +7,9 @@ dist/
 *.log
 Thumbs.db
 .DS_Store
+runtime/
+runtime-install/
+ikemen-download.zip
+test-output/
+__pycache__/
+*.pyc

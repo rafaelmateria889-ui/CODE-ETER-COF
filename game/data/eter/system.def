@@ -1,0 +1,132 @@
+[Info]
+name = CODE-ETER-COF
+author = Rafael Materia / CODE-ETER-COF
+localcoord = 1280,720
+ikemenversion = 1.0
+[Files]
+spr = ui.sff
+snd = data/system.snd
+select = data/eter/select.def
+fight = data/fight.def
+font1 = f-4x6.def
+font2 = Open_Sans.def
+font2.height = 30
+font3 = default-3x5.def
+[Title Info]
+fadein.time = 12
+fadeout.time = 10
+menu.pos = 640,410
+menu.item.font = 2,0,0,175,189,209
+menu.item.active.font = 2,0,0,255,184,94
+menu.item.spacing = 0,43
+menu.window.visibleitems = 6
+menu.window.margins.y = 48,32
+menu.boxcursor.visible = 0
+menu.itemname.versus = VERSUS LOCAL
+menu.itemname.arcade = CONTRA CPU
+menu.itemname.training = TREINO
+menu.itemname.menunetwork = ONLINE / EXPERIMENTAL
+menu.itemname.menunetwork.serverhost = HOSPEDAR
+menu.itemname.menunetwork.serverjoin = ENTRAR
+menu.itemname.menunetwork.serverjoin.joinadd = NOVO ENDERECO
+menu.itemname.menunetwork.serverjoin.back = VOLTAR
+menu.itemname.menunetwork.back = VOLTAR
+menu.itemname.server.netplayversus = VERSUS 1 CONTRA 1
+menu.itemname.server.back = SAIR
+menu.itemname.options = TECLADO / CONTROLE / OPCOES
+menu.itemname.exit = SAIR
+cursor.move.snd = 100,0
+cursor.done.snd = 100,1
+cancel.snd = 100,2
+[TitleBGdef]
+bgclearcolor = 9,14,25
+[TitleBG Background]
+type = normal
+spriteno = 0,0
+start = 0,0
+[Select Info]
+fadein.time = 12
+fadeout.time = 10
+rows = 1
+columns = 2
+wrapping = 1
+pos = 524,272
+showemptyboxes = 0
+cell.size = 104,104
+cell.spacing = 20
+cell.bg.spr = 100,0
+p1.cursor.startcell = 0,0
+p2.cursor.startcell = 0,1
+p1.cursor.active.spr = 101,0
+p2.cursor.active.spr = 102,0
+p1.cursor.done.spr = 101,0
+p2.cursor.done.spr = 102,0
+portrait.spr = 9000,0
+portrait.scale = 1,1
+portrait.offset = 2,2
+p1.face.anim = 0
+p1.face.offset = 290,590
+p1.face.scale = 1.15,1.15
+p1.face.facing = 1
+p2.face.anim = 0
+p2.face.offset = 990,590
+p2.face.scale = 1.15,1.15
+p2.face.facing = -1
+p1.name.offset = 290,645
+p1.name.font = 2,0,0,244,117,133
+p2.name.offset = 990,645
+p2.name.font = 2,0,0,255,183,92
+stage.pos = 640,460
+stage.active.font = 2,0,0
+stage.done.font = 2,0,0
+title.offset = 640,160
+title.font = 2,0,0
+title.text = ESCOLHA SEU LUTADOR
+p1.teammenu.move.snd = 100,0
+p2.teammenu.move.snd = 100,0
+[SelectBGdef]
+bgclearcolor = 9,14,25
+[SelectBG Background]
+type = normal
+spriteno = 1,0
+start = 0,0
+[VS Screen]
+time = 100
+fadein.time = 10
+fadeout.time = 10
+p1.spr = 9000,1
+p1.offset = 250,130
+p1.scale = 3,3
+p2.spr = 9000,1
+p2.offset = 1030,130
+p2.scale = 3,3
+p2.facing = -1
+p1.name.pos = 320,620
+p1.name.font = 2,0,0
+p2.name.pos = 960,620
+p2.name.font = 2,0,0
+[VersusBGdef]
+bgclearcolor = 9,14,25
+[VersusBG Background]
+type = normal
+spriteno = 1,0
+start = 0,0
+[Victory Screen]
+enabled = 1
+time = 300
+fadein.time = 12
+fadeout.time = 12
+[OptionBGdef]
+bgclearcolor = 12,20,34
+[Option Info]
+title.font = 2,0,0
+title.offset = 640,90
+menu.pos = 300,180
+menu.item.font = 2,0,1,220,227,235
+menu.item.active.font = 2,0,1,255,184,94
+menu.item.value.font = 2,0,-1,220,227,235
+menu.item.value.active.font = 2,0,-1,255,184,94
+menu.item.value.offset = 680,0
+menu.item.spacing = 0,36
+menu.window.visibleitems = 13
+
