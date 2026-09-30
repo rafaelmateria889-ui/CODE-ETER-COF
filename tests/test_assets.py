@@ -35,8 +35,16 @@ class Assets(unittest.TestCase):
             p=ROOT/'game/chars'/name
             cns=(p/f'{name}.cns').read_text();cmd=(p/f'{name}.cmd').read_text()
             states=set(map(int,re.findall(r'\[Statedef (\d+)\]',cns)))
+            actions=set(map(int,re.findall(r'\[Begin Action (\d+)\]',(p/f'{name}.air').read_text())))
+            for n in re.findall(r'^anim = (\d+)$',cns,re.M):self.assertIn(int(n),actions,f'{name}: missing action {n}')
             for n in [200,210,220,230,400,410,420,430,600,610,620,630,800,810,820,821,1000,1100,1200,1300,3000]:self.assertIn(n,states)
             self.assertIn('Power >= 1000',cmd)
             self.assertIn('poweradd = -1000',cns)
+            for n in [1001,1101,1201,1301,3100,3110,3111]:self.assertIn(n,states)
+            self.assertIn('MoveHit && NumTarget > 0 && P2Life > 0',cns)
+            if name=='simon':
+                for n in [1310,1400,1401,1450,1451]:self.assertIn(n,states)
+                self.assertIn('NumHelper(1450) = 0',cmd)
+                self.assertIn('Root, MoveType = H',cns)
+                self.assertIn('stateno = 1451',cns)
 if __name__=='__main__':unittest.main()
-

@@ -7,7 +7,7 @@ Modo utilizado: ferramenta integrada GPT Image. As folhas geradas são os arquiv
 - `assets/source/techblade.png`: folha de Techblade.
 - `tools/build_assets.py`: extração com área adicional para extremidades, limpeza de fragmentos de células vizinhas, origem fixa e conversão para paleta/SFF.
 
-São 24 células por folha; os 448 registros de animação de cada personagem reutilizam poses e NÃO representam 448 desenhos únicos. A fluidez da simulação é independente da quantidade de desenhos. É necessário desenhar mais transições e golpes exclusivos para alcançar o polimento final de uma produção comercial.
+As folhas iniciais têm 24 células cada. A versão 0.2 acrescenta 24 poses de combate (12 por personagem) e 12 poses de servo/tentáculos. Os registros AIR reutilizam desenhos e NÃO representam centenas de desenhos únicos. A fluidez da simulação é independente da quantidade de desenhos. É necessário desenhar mais transições e golpes exclusivos para alcançar o polimento final de uma produção comercial.
 
 ## Direção enviada ao gerador
 
@@ -17,7 +17,14 @@ Simon: uniforme militar preto, rosto descoberto, portais vermelhos e mão invoca
 
 Techblade: samurai inteiramente ciborgue, capuz e armadura preta, visor laranja, braços e mãos 100% mecânicos, katana quente laranja, sem pele visível.
 
+## Novos arquivos da versão 0.2
+
+- `assets/source/combat-extra.png`: 24 poses, seis colunas/quatro linhas; Simon agachado, Simon salto/chute, Techblade agachado/corte, Techblade salto/corte. Fundo transparente, roupa preta e identidades preservadas.
+- `assets/source/summons.png`: 12 poses em seis colunas/duas linhas; servo esquelético emerge, desfere um golpe e desaparece; tentáculos saem de um portal vermelho, estendem e recolhem. Sem sangue nem vítima desenhada no atlas.
+
+Prompts: novas folhas complementares com escala/origem consistentes, contornos e sombreamento de luta arcade, sem texto/grid, extremidades contidas nas células; referências Simon v2 e Techblade para a folha de combate. Usada a ferramenta integrada GPT Image. A extração e a conversão são operações do build, não novos desenhos.
+
 ## Próximo passo visual
 
-Mais quadros exclusivos de socos, golpes agachados/aéreos, agarrões e supers; revisão manual de alinhamento e volume; animação de tentáculos e servo. As referências de rosto têm mais detalhe do que é legível no sprite final.
+Mais transições exclusivas de socos e vitória, revisão manual de volume e super; evitar prometer polimento comercial com os quadros atuais. As referências de rosto têm mais detalhe do que é legível no sprite final.
 

@@ -1,5 +1,5 @@
 """Install pinned native engine, verify archive, overlay authored game content.
-No Python packages are needed to play. Python is only the Linux/macOS installer.
+No Python packages are needed to play. Python is only the Linux installer.
 """
 import argparse, hashlib, os, platform, shutil, subprocess, urllib.request, zipfile
 from pathlib import Path

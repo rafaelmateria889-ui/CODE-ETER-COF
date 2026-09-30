@@ -1,4 +1,4 @@
-SIMON / PROTOTIPO 0.1
+SIMON / PROTOTIPO 0.2
 
 X = soco leve   A = chute leve
 Y = soco forte  B = chute forte
@@ -13,5 +13,6 @@ Baixo, diagonal frente, frente + X : Fenda de Entrada
 Baixo, diagonal tras, tras + X : Mao do Limiar
 Frente, baixo, diagonal frente + X : Ruptura Ascendente
 Frente, baixo, diagonal frente + A : Abraco do Abismo
+Baixo, diagonal tras, tras + A/B : Servo da Fenda (uma invocacao)
 Duplo quarto de lua para frente + X+Y : super (1 barra)
 Leve > forte > especial: cancela ao acertar/defender.

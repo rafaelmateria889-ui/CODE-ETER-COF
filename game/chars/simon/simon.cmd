@@ -53,6 +53,31 @@ command = F,D,DF,a
 time = 24
 
 [Command]
+name = "servoH"
+command = ~D, DB, B, b
+time = 24
+
+[Command]
+name = "qcfH"
+command = ~D, DF, F, y
+time = 24
+
+[Command]
+name = "qcbH"
+command = ~D, DB, B, y
+time = 24
+
+[Command]
+name = "dpH"
+command = F, D, DF, y
+time = 24
+
+[Command]
+name = "throwspH"
+command = F, D, DF, b
+time = 24
+
+[Command]
 name = "x"
 command = x
 time = 1
@@ -155,9 +180,11 @@ triggerall = AILevel = 0
 triggerall = RoundState = 2
 triggerall = StateType != A
 triggerall = command = "step"
+triggerall = NumHelper(1450) = 0
+triggerall = var(5) = 0
 trigger1 = Ctrl
 trigger2 = MoveContact && (StateNo = 200 || StateNo = 210 || StateNo = 220 || StateNo = 400 || StateNo = 410 || StateNo = 420)
-value = 1100
+value = 1400
 
 [State 0, throwsp]
 type = ChangeState
@@ -168,6 +195,58 @@ triggerall = command = "throwsp"
 trigger1 = Ctrl
 trigger2 = MoveContact && (StateNo = 200 || StateNo = 210 || StateNo = 220 || StateNo = 400 || StateNo = 410 || StateNo = 420)
 value = 1300
+
+[State 0, servoH]
+type = ChangeState
+triggerall = AILevel = 0
+triggerall = RoundState = 2
+triggerall = StateType != A
+triggerall = command = "servoH"
+triggerall = NumHelper(1450) = 0
+triggerall = var(5) = 0
+trigger1 = Ctrl
+trigger2 = MoveContact && (StateNo = 200 || StateNo = 210 || StateNo = 220 || StateNo = 400 || StateNo = 410 || StateNo = 420)
+value = 1401
+
+[State 0, dpH]
+type = ChangeState
+triggerall = AILevel = 0
+triggerall = RoundState = 2
+triggerall = StateType != A
+triggerall = command = "dpH"
+trigger1 = Ctrl
+trigger2 = MoveContact && (StateNo = 200 || StateNo = 210 || StateNo = 220 || StateNo = 400 || StateNo = 410 || StateNo = 420)
+value = 1201
+
+[State 0, qcfH]
+type = ChangeState
+triggerall = AILevel = 0
+triggerall = RoundState = 2
+triggerall = StateType != A
+triggerall = command = "qcfH"
+trigger1 = Ctrl
+trigger2 = MoveContact && (StateNo = 200 || StateNo = 210 || StateNo = 220 || StateNo = 400 || StateNo = 410 || StateNo = 420)
+value = 1101
+
+[State 0, qcbH]
+type = ChangeState
+triggerall = AILevel = 0
+triggerall = RoundState = 2
+triggerall = StateType != A
+triggerall = command = "qcbH"
+trigger1 = Ctrl
+trigger2 = MoveContact && (StateNo = 200 || StateNo = 210 || StateNo = 220 || StateNo = 400 || StateNo = 410 || StateNo = 420)
+value = 1001
+
+[State 0, throwspH]
+type = ChangeState
+triggerall = AILevel = 0
+triggerall = RoundState = 2
+triggerall = StateType != A
+triggerall = command = "throwspH"
+trigger1 = Ctrl
+trigger2 = MoveContact && (StateNo = 200 || StateNo = 210 || StateNo = 220 || StateNo = 400 || StateNo = 410 || StateNo = 420)
+value = 1301
 
 [State 0, c]
 type = ChangeState

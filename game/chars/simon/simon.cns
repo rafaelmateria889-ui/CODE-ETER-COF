@@ -191,7 +191,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 9
 attr = S,NA
 damage = 52,0
 animtype = Light
@@ -239,7 +239,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 12
 attr = S,NA
 damage = 78,0
 animtype = Hard
@@ -287,7 +287,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 12
 attr = S,NA
 damage = 92,0
 animtype = Hard
@@ -383,7 +383,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 9
 attr = C,NA
 damage = 52,0
 animtype = Light
@@ -431,7 +431,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 12
 attr = C,NA
 damage = 78,0
 animtype = Hard
@@ -479,7 +479,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 12
 attr = C,NA
 damage = 92,0
 animtype = Hard
@@ -573,7 +573,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 9
 attr = A,NA
 damage = 52,0
 animtype = Light
@@ -620,7 +620,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 12
 attr = A,NA
 damage = 78,0
 animtype = Hard
@@ -667,7 +667,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 12
 attr = A,NA
 damage = 92,0
 animtype = Hard
@@ -759,7 +759,7 @@ pausetime = 0,0
 sparkno = -1
 guard.sparkno = -1
 hitsound = S0,3
-p1stateno = 810
+p1stateno = 1310
 p2stateno = 820
 fall = 1
 getpower = 70
@@ -773,7 +773,46 @@ value = 175
 
 [State 0, Whiff]
 type = ChangeState
-trigger1 = Time >= 32
+trigger1 = Time >= 42
+value = 0
+ctrl = 1
+
+[Statedef 1301]
+type = S
+movetype = A
+physics = S
+anim = 1300
+ctrl = 0
+velset = 0,0
+
+[State 0, Grab]
+type = HitDef
+trigger1 = Time = 12
+trigger1 = P2BodyDist X < 40
+trigger1 = P2StateType != A
+trigger1 = P2MoveType != H
+attr = S,ST
+hitflag = M-
+priority = 1,Miss
+pausetime = 0,0
+sparkno = -1
+guard.sparkno = -1
+hitsound = S0,3
+p1stateno = 1310
+p2stateno = 820
+fall = 1
+getpower = 70
+givepower = 40
+
+[State 0, Damage]
+type = VarSet
+trigger1 = Time = 0
+v = 0
+value = 195
+
+[State 0, Whiff]
+type = ChangeState
+trigger1 = Time >= 48
 value = 0
 ctrl = 1
 
@@ -856,7 +895,7 @@ value = 0,3
 type = HitDef
 trigger1 = Time = 9
 attr = S,SA
-damage = 100,6
+damage = 90,5
 animtype = Hard
 guardflag = MA
 hitflag = MAF
@@ -918,7 +957,7 @@ value = 0,3
 type = HitDef
 trigger1 = Time = 9
 attr = S,SA
-damage = 125,7
+damage = 115,6
 animtype = Hard
 guardflag = MA
 hitflag = MAF
@@ -944,7 +983,7 @@ givepower = 25,12
 
 [State 0, Recover]
 type = ChangeState
-trigger1 = Time >= 42
+trigger1 = Time >= 48
 value = 50
 ctrl = 1
 
@@ -979,35 +1018,304 @@ value = 0,3
 type = HitDef
 trigger1 = Time = 9
 attr = S,HA
-damage = 255,15
-animtype = Hard
+damage = 45,2
+animtype = Light
 guardflag = MA
 hitflag = MAF
 priority = 4,Hit
-pausetime = 10,10
+pausetime = 7,7
 sparkno = 2
 guard.sparkno = 40
 sparkxy = -10,-95
-hitsound = S0,1
+hitsound = S0,0
 guardsound = S0,0
 ground.type = High
 ground.slidetime = 16
-ground.hittime = 22
-ground.velocity = -5,-8
+ground.hittime = 16
+ground.velocity = -5,0
 guard.velocity = -4
 air.type = High
 air.velocity = -5,-7
 air.hittime = 22
-fall = 1
+fall = 0
 fall.recover = 1
 getpower = 0,18
 givepower = 25,12
+
+[State 0, Confirm only on hit]
+type = ChangeState
+trigger1 = MoveHit && NumTarget > 0 && P2Life > 0
+value = 3100
 
 [State 0, Recover]
 type = ChangeState
 trigger1 = Time >= 66
 value = 0
 ctrl = 1
+
+[Statedef 3100]
+type = S
+movetype = A
+physics = S
+anim = 3100
+ctrl = 0
+velset = 0,0
+
+[State 0, Capture]
+type = TargetState
+trigger1 = Time = 0 && NumTarget > 0
+value = 3110
+
+[State 0, Hold]
+type = TargetBind
+trigger1 = Time < 40 && NumTarget > 0
+pos = 65,-25
+
+[State 0, Confirmed hits]
+type = TargetLifeAdd
+trigger1 = Time = 8 || Time = 16 || Time = 24
+value = -45
+kill = 0
+
+[State 0, Impact]
+type = EnvShake
+trigger1 = Time = 8 || Time = 16 || Time = 24 || Time = 36
+time = 5
+ampl = -3
+freq = 90
+
+[State 0, Impact sound]
+type = PlaySnd
+trigger1 = Time = 8 || Time = 16 || Time = 24 || Time = 36
+value = 0,2
+
+[State 0, Tentacles]
+type = Explod
+trigger1 = Time = 0
+anim = 1460
+ID = 1460
+postype = p1
+pos = 65,0
+bindtime = 36
+removetime = 36
+sprpriority = 3
+
+[State 0, Final damage]
+type = TargetLifeAdd
+trigger1 = Time = 36
+value = -85
+kill = 1
+
+[State 0, Finish launch]
+type = TargetState
+trigger1 = Time = 36 && NumTarget > 0
+value = 3111
+
+[State 0, No target]
+type = ChangeState
+trigger1 = NumTarget = 0 && Time < 36
+trigger2 = Time >= 55
+value = 0
+ctrl = 1
+
+[Statedef 3110]
+type = A
+movetype = H
+physics = N
+ctrl = 0
+velset = 0,0
+
+[State 0, Captured animation]
+type = ChangeAnim2
+trigger1 = Time = 0
+value = 5000
+
+[State 0, Release fail safe]
+type = SelfState
+trigger1 = Time >= 65
+value = 5050
+
+[Statedef 3111]
+type = A
+movetype = H
+physics = N
+ctrl = 0
+velset = -9,-11
+
+[State 0, Own falling state]
+type = SelfState
+trigger1 = 1
+value = 5050
+
+[Statedef 1310]
+type = S
+movetype = A
+physics = S
+anim = 1310
+ctrl = 0
+velset = 0,0
+
+[State 0, Hold]
+type = TargetBind
+trigger1 = Time < 28 && NumTarget > 0
+pos = 45,-30
+
+[State 0, Tentacles]
+type = Explod
+trigger1 = Time = 0
+anim = 1460
+ID = 1460
+postype = p1
+pos = 45,0
+bindtime = 28
+removetime = 28
+sprpriority = 3
+
+[State 0, Crush]
+type = TargetLifeAdd
+trigger1 = Time = 28
+value = -var(0)
+kill = 1
+
+[State 0, Release]
+type = TargetState
+trigger1 = Time = 28
+value = 821
+
+[State 0, Recovery]
+type = ChangeState
+trigger1 = Time >= 48
+trigger2 = NumTarget = 0 && Time < 28
+value = 0
+ctrl = 1
+
+[Statedef 1400]
+type = S
+movetype = A
+physics = S
+anim = 1400
+ctrl = 0
+velset = 0,0
+
+[State 0, Cooldown]
+type = VarSet
+trigger1 = Time = 0
+v = 5
+value = 120
+
+[State 0, Summon one servant]
+type = Helper
+trigger1 = Time = 21
+trigger1 = NumHelper(1450) = 0
+name = "Servo da Fenda"
+ID = 1450
+stateno = 1450
+postype = p1
+pos = 55,0
+keyctrl = 0
+ownpal = 1
+size.ground.back = 12
+size.ground.front = 12
+size.height = 85
+
+[State 0, Recovery]
+type = ChangeState
+trigger1 = Time >= 54
+value = 0
+ctrl = 1
+
+[Statedef 1450]
+type = S
+movetype = I
+physics = N
+anim = 1450
+ctrl = 0
+velset = 0,0
+
+[State 0, Hit dismisses servant]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, NA, SA, HA, NP, SP, HP
+stateno = 1451
+time = -1
+slot = 0
+
+[State 0, No body blocking]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 0, Approach]
+type = VelSet
+trigger1 = Time >= 12 && Time < 32
+x = 3.5
+
+[State 0, Stop]
+type = VelSet
+trigger1 = Time = 32
+x = 0
+
+[State 0, Single strike]
+type = HitDef
+trigger1 = Time = 32
+attr = S,SA
+damage = 60,3
+animtype = Light
+guardflag = MA
+hitflag = MAF
+priority = 4,Hit
+pausetime = 7,7
+sparkno = 2
+guard.sparkno = 40
+sparkxy = -10,-95
+hitsound = S0,0
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 16
+ground.hittime = 16
+ground.velocity = -5,0
+guard.velocity = -4
+air.type = High
+air.velocity = -5,-7
+air.hittime = 22
+fall = 0
+fall.recover = 1
+getpower = 0,0
+givepower = 15,8
+
+[State 0, Leave]
+type = DestroySelf
+trigger1 = Time >= 66
+trigger2 = Root, MoveType = H
+trigger3 = RoundState != 2
+
+
+[Statedef 1451]
+type = S
+movetype = H
+physics = N
+anim = 1450
+ctrl = 0
+velset = 0,0
+
+[State 0, Dismiss]
+type = DestroySelf
+trigger1 = 1
+
+
+[Statedef -3]
+
+[State 0, Summon cooldown]
+type = VarAdd
+trigger1 = var(5) > 0
+v = 5
+value = -1
+
+[State 0, Round reset]
+type = VarSet
+trigger1 = RoundState != 2
+v = 5
+value = 0
 
 [Statedef 1100]
 type = S
@@ -1043,6 +1351,190 @@ mul = 256,150,180
 [State 0, Recover]
 type = ChangeState
 trigger1 = Time >= 36
+value = 0
+ctrl = 1
+
+[Statedef 1001]
+type = S
+movetype = A
+physics = S
+anim = 1000
+ctrl = 0
+velset = 0,0
+juggle = 8
+
+[State 0, Audio]
+type = PlaySnd
+trigger1 = Time = 5
+value = 0,3
+
+[State 0, Hit]
+type = HitDef
+trigger1 = Time = 9
+attr = S,SA
+damage = 108,5
+animtype = Hard
+guardflag = MA
+hitflag = MAF
+priority = 4,Hit
+pausetime = 10,10
+sparkno = 2
+guard.sparkno = 40
+sparkxy = -10,-95
+hitsound = S0,1
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 16
+ground.hittime = 22
+ground.velocity = -5,0
+guard.velocity = -4
+air.type = High
+air.velocity = -5,-7
+air.hittime = 22
+fall = 0
+fall.recover = 1
+getpower = 45,18
+givepower = 25,12
+
+[State 0, Recover]
+type = ChangeState
+trigger1 = Time >= 51
+value = 0
+ctrl = 1
+
+; Ruptura Ascendente
+
+[Statedef 1101]
+type = S
+movetype = I
+physics = S
+anim = 1100
+ctrl = 0
+velset = 0,0
+
+[State 0, Travel]
+type = PosAdd
+trigger1 = Time = 14
+x = min(P2Dist X+65,frontedgedist-26)
+
+[State 0, Intangible]
+type = NotHitBy
+trigger1 = Time >= 12 && Time < 17
+value = SCA
+time = 1
+
+[State 0, Push]
+type = PlayerPush
+trigger1 = Time >= 12 && Time < 17
+value = 0
+
+[State 0, Color]
+type = PalFX
+trigger1 = Time = 11
+time = 8
+add = 90,-30,10
+mul = 256,150,180
+
+[State 0, Recover]
+type = ChangeState
+trigger1 = Time >= 45
+value = 0
+ctrl = 1
+
+[Statedef 1201]
+type = S
+movetype = A
+physics = S
+anim = 1200
+ctrl = 0
+velset = 0,0
+juggle = 8
+
+[State 0, Launch]
+type = VelSet
+trigger1 = Time = 8
+x = 2.5
+y = -11
+
+[State 0, Air]
+type = StateTypeSet
+trigger1 = Time = 8
+statetype = A
+physics = A
+
+[State 0, Audio]
+type = PlaySnd
+trigger1 = Time = 5
+value = 0,3
+
+[State 0, Hit]
+type = HitDef
+trigger1 = Time = 9
+attr = S,SA
+damage = 138,6
+animtype = Hard
+guardflag = MA
+hitflag = MAF
+priority = 4,Hit
+pausetime = 10,10
+sparkno = 2
+guard.sparkno = 40
+sparkxy = -10,-95
+hitsound = S0,1
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 16
+ground.hittime = 22
+ground.velocity = -5,-8
+guard.velocity = -4
+air.type = High
+air.velocity = -5,-7
+air.hittime = 22
+fall = 1
+fall.recover = 1
+getpower = 45,18
+givepower = 25,12
+
+[State 0, Recover]
+type = ChangeState
+trigger1 = Time >= 57
+value = 50
+ctrl = 1
+
+; Brecha Entre Mundos
+
+[Statedef 1401]
+type = S
+movetype = A
+physics = S
+anim = 1400
+ctrl = 0
+velset = 0,0
+
+[State 0, Cooldown]
+type = VarSet
+trigger1 = Time = 0
+v = 5
+value = 120
+
+[State 0, Summon one servant]
+type = Helper
+trigger1 = Time = 21
+trigger1 = NumHelper(1450) = 0
+name = "Servo da Fenda"
+ID = 1450
+stateno = 1450
+postype = p1
+pos = 95,0
+keyctrl = 0
+ownpal = 1
+size.ground.back = 12
+size.ground.front = 12
+size.height = 85
+
+[State 0, Recovery]
+type = ChangeState
+trigger1 = Time >= 63
 value = 0
 ctrl = 1
 

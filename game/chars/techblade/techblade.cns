@@ -191,7 +191,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 9
 attr = S,NA
 damage = 52,0
 animtype = Light
@@ -239,7 +239,7 @@ value = 0,2
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 12
 attr = S,NA
 damage = 78,0
 animtype = Hard
@@ -287,7 +287,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 12
 attr = S,NA
 damage = 92,0
 animtype = Hard
@@ -383,7 +383,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 9
 attr = C,NA
 damage = 52,0
 animtype = Light
@@ -431,7 +431,7 @@ value = 0,2
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 12
 attr = C,NA
 damage = 78,0
 animtype = Hard
@@ -479,7 +479,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 12
 attr = C,NA
 damage = 92,0
 animtype = Hard
@@ -573,7 +573,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 9
 attr = A,NA
 damage = 52,0
 animtype = Light
@@ -620,7 +620,7 @@ value = 0,2
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 12
 attr = A,NA
 damage = 78,0
 animtype = Hard
@@ -667,7 +667,7 @@ value = 0,0
 
 [State 0, Strike]
 type = HitDef
-trigger1 = Time = 6
+trigger1 = Time = 12
 attr = A,NA
 damage = 92,0
 animtype = Hard
@@ -822,7 +822,7 @@ value = 0,2
 type = HitDef
 trigger1 = Time = 9
 attr = S,SA
-damage = 100,6
+damage = 90,5
 animtype = Hard
 guardflag = MA
 hitflag = MAF
@@ -884,7 +884,7 @@ value = 0,2
 type = HitDef
 trigger1 = Time = 9
 attr = S,SA
-damage = 125,7
+damage = 115,6
 animtype = Hard
 guardflag = MA
 hitflag = MAF
@@ -910,7 +910,7 @@ givepower = 25,12
 
 [State 0, Recover]
 type = ChangeState
-trigger1 = Time >= 42
+trigger1 = Time >= 48
 value = 50
 ctrl = 1
 
@@ -945,29 +945,34 @@ value = 0,2
 type = HitDef
 trigger1 = Time = 9
 attr = S,HA
-damage = 255,15
-animtype = Hard
+damage = 45,2
+animtype = Light
 guardflag = MA
 hitflag = MAF
 priority = 4,Hit
-pausetime = 10,10
+pausetime = 7,7
 sparkno = 2
 guard.sparkno = 40
 sparkxy = -10,-95
-hitsound = S0,1
+hitsound = S0,0
 guardsound = S0,0
 ground.type = High
 ground.slidetime = 16
-ground.hittime = 22
-ground.velocity = -5,-8
+ground.hittime = 16
+ground.velocity = -5,0
 guard.velocity = -4
 air.type = High
 air.velocity = -5,-7
 air.hittime = 22
-fall = 1
+fall = 0
 fall.recover = 1
 getpower = 0,18
 givepower = 25,12
+
+[State 0, Confirm only on hit]
+type = ChangeState
+trigger1 = MoveHit && NumTarget > 0 && P2Life > 0
+value = 3100
 
 [State 0, Recover]
 type = ChangeState
@@ -1025,6 +1030,89 @@ trigger1 = Time >= 42
 value = 0
 ctrl = 1
 
+[Statedef 3100]
+type = S
+movetype = A
+physics = S
+anim = 3100
+ctrl = 0
+velset = 0,0
+
+[State 0, Capture]
+type = TargetState
+trigger1 = Time = 0 && NumTarget > 0
+value = 3110
+
+[State 0, Hold]
+type = TargetBind
+trigger1 = Time < 40 && NumTarget > 0
+pos = 65,-25
+
+[State 0, Confirmed hits]
+type = TargetLifeAdd
+trigger1 = Time = 8 || Time = 16 || Time = 24
+value = -45
+kill = 0
+
+[State 0, Impact]
+type = EnvShake
+trigger1 = Time = 8 || Time = 16 || Time = 24 || Time = 36
+time = 5
+ampl = -3
+freq = 90
+
+[State 0, Impact sound]
+type = PlaySnd
+trigger1 = Time = 8 || Time = 16 || Time = 24 || Time = 36
+value = 0,2
+
+[State 0, Final damage]
+type = TargetLifeAdd
+trigger1 = Time = 36
+value = -85
+kill = 1
+
+[State 0, Finish launch]
+type = TargetState
+trigger1 = Time = 36 && NumTarget > 0
+value = 3111
+
+[State 0, No target]
+type = ChangeState
+trigger1 = NumTarget = 0 && Time < 36
+trigger2 = Time >= 55
+value = 0
+ctrl = 1
+
+[Statedef 3110]
+type = A
+movetype = H
+physics = N
+ctrl = 0
+velset = 0,0
+
+[State 0, Captured animation]
+type = ChangeAnim2
+trigger1 = Time = 0
+value = 5000
+
+[State 0, Release fail safe]
+type = SelfState
+trigger1 = Time >= 65
+value = 5050
+
+[Statedef 3111]
+type = A
+movetype = H
+physics = N
+ctrl = 0
+velset = -9,-11
+
+[State 0, Own falling state]
+type = SelfState
+trigger1 = 1
+value = 5050
+
 [Statedef 1100]
 type = S
 movetype = I
@@ -1041,6 +1129,190 @@ x = 9
 [State 0, Recover]
 type = ChangeState
 trigger1 = Time >= 36
+value = 0
+ctrl = 1
+
+[Statedef 1001]
+type = S
+movetype = A
+physics = S
+anim = 1000
+ctrl = 0
+velset = 0,0
+juggle = 8
+
+[State 0, Drive]
+type = VelSet
+trigger1 = Time >= 5 && Time < 16
+x = 10.5
+
+[State 0, Audio]
+type = PlaySnd
+trigger1 = Time = 5
+value = 0,2
+
+[State 0, Hit]
+type = HitDef
+trigger1 = Time = 9
+attr = S,SA
+damage = 108,5
+animtype = Hard
+guardflag = MA
+hitflag = MAF
+priority = 4,Hit
+pausetime = 10,10
+sparkno = 2
+guard.sparkno = 40
+sparkxy = -10,-95
+hitsound = S0,1
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 16
+ground.hittime = 22
+ground.velocity = -5,0
+guard.velocity = -4
+air.type = High
+air.velocity = -5,-7
+air.hittime = 22
+fall = 0
+fall.recover = 1
+getpower = 45,18
+givepower = 25,12
+
+[State 0, Recover]
+type = ChangeState
+trigger1 = Time >= 51
+value = 0
+ctrl = 1
+
+; Corte Ascendente
+
+[Statedef 1101]
+type = S
+movetype = I
+physics = S
+anim = 1100
+ctrl = 0
+velset = 0,0
+
+[State 0, Step]
+type = VelSet
+trigger1 = Time >= 5 && Time < 14
+x = 11
+
+[State 0, Recover]
+type = ChangeState
+trigger1 = Time >= 45
+value = 0
+ctrl = 1
+
+[Statedef 1201]
+type = S
+movetype = A
+physics = S
+anim = 1200
+ctrl = 0
+velset = 0,0
+juggle = 8
+
+[State 0, Launch]
+type = VelSet
+trigger1 = Time = 8
+x = 2.5
+y = -11
+
+[State 0, Air]
+type = StateTypeSet
+trigger1 = Time = 8
+statetype = A
+physics = A
+
+[State 0, Audio]
+type = PlaySnd
+trigger1 = Time = 5
+value = 0,2
+
+[State 0, Hit]
+type = HitDef
+trigger1 = Time = 9
+attr = S,SA
+damage = 138,6
+animtype = Hard
+guardflag = MA
+hitflag = MAF
+priority = 4,Hit
+pausetime = 10,10
+sparkno = 2
+guard.sparkno = 40
+sparkxy = -10,-95
+hitsound = S0,1
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 16
+ground.hittime = 22
+ground.velocity = -5,-8
+guard.velocity = -4
+air.type = High
+air.velocity = -5,-7
+air.hittime = 22
+fall = 1
+fall.recover = 1
+getpower = 45,18
+givepower = 25,12
+
+[State 0, Recover]
+type = ChangeState
+trigger1 = Time >= 57
+value = 50
+ctrl = 1
+
+; Sobrecarga da Lamina
+
+[Statedef 1301]
+type = S
+movetype = A
+physics = S
+anim = 1300
+ctrl = 0
+velset = 0,0
+juggle = 8
+
+[State 0, Audio]
+type = PlaySnd
+trigger1 = Time = 5
+value = 0,2
+
+[State 0, Hit]
+type = HitDef
+trigger1 = Time = 9
+attr = S,SA
+damage = 108,5
+animtype = Hard
+guardflag = MA
+hitflag = MAF
+priority = 4,Hit
+pausetime = 10,10
+sparkno = 2
+guard.sparkno = 40
+sparkxy = -10,-95
+hitsound = S0,1
+guardsound = S0,0
+ground.type = High
+ground.slidetime = 16
+ground.hittime = 22
+ground.velocity = -5,0
+guard.velocity = -4
+air.type = High
+air.velocity = -5,-7
+air.hittime = 22
+fall = 0
+fall.recover = 1
+getpower = 45,18
+givepower = 25,12
+
+[State 0, Recover]
+type = ChangeState
+trigger1 = Time >= 51
 value = 0
 ctrl = 1
 

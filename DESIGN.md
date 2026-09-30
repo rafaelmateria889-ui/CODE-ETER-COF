@@ -1,22 +1,19 @@
-# Protótipo 0.1 — decisões e escopo
+# Protótipo 0.2 — decisões e escopo
 
-Mantido Ikemen GO 1.0.0; jogo nativo com simulação de luta a 60 passos/s. Não houve migração de motor.
+Ikemen GO 1.0.0, motor oficial sem mudanças no núcleo, luta a 60ticks/s. Local 1v1, quatro botões, defesa alta/baixa, agarrão, corridas, salto, leves→fortes→especiais após contato, barra, melhor de três e 99 segundos. O motor aplica juggle, colisão e troca de lado.
 
-## Núcleo
+## Combate desta versão
 
-A=x, B=a, C=y, D=b na nomenclatura interna do Ikemen. Os layouts de teclado têm teclas distintas. Motions aceitam até 24 frames e buffer de botão de 4 frames; o super aceita 32. Direcionais mantidos usam buffer de 1 frame. O motor resolve troca de lado, colisões e estados comuns.
+Normais começam em 6/9/12/12 frames e têm 6 frames ativos, durações 21/27/33/36 e danos 38/52/78/92. Especiais base ofensivos começam em 9 e têm 9 frames ativos. Variantes fortes têm recuperação maior; dados em docs/frame-data.json. O agarrão normal começa em 6, dano 135; tentáculos 175/195 e falha de 42/48 frames. Agarrões rejeitam ar e stun, incluindo defesa em stun. Teleporte tem preparação e recuperação com curta janela de intangibilidade; forte tenta ultrapassar o rival quando existe espaço.
 
-Os golpes têm hitboxes por trecho da animação. Normais iniciam em 6 frames e têm 6 frames ativos, com duração total inicial entre 21 e 36. Especiais ofensivos começam em 9 frames, têm 9 frames ativos e recuperação mais longa. Cada HitDef é criado uma única vez por ação. Quedas e limite de juggle usam regras do motor. Não foi feito balanceamento competitivo.
+Servo: invoca no frame 21, ataca uma vez após 32 ticks próprios, expira aos 66, cooldown de 120 ticks e limite de um. Sai ao receber golpe, ao interromper Simon ou ao acabar o round. Não forma obstáculo corporal. O agarrão rejeita stun para não produzir agarrão inevitável durante bloqueio do servo.
 
-A cadeia leve → forte → especial só fica disponível após contato. Não há cancelamento de forte de volta para leve. Teleporte tem preparação e recuperação, com intangibilidade somente em uma janela curta. Agarrões verificam distância e rejeitam adversários no ar ou em stun.
+Super: custa 1000, primeiro ataque 45; só captura com MoveHit, alvo presente e vivo. Após confirmar, aplica 3×45 e final 85, total 265 antes de modificadores do motor. Bloqueio/erro não iniciam sequência; custo permanece. Vítima tem estado de saída de segurança. Não existe repetição infinita da sequência.
 
-## Diferenças da especificação de produção
+## Arte
 
-Esta é a primeira entrega jogável, não a conclusão de A–D. As variantes leve/forte dos especiais ainda compartilham uma versão; Simon tem um antiaéreo provisório para testar o espaço aéreo. Servo/minion, tentáculos articulados e armas invocadas continuam pendentes.
+Simon com rosto/cabelo das referências e uniforme militar preto; Techblade mecânico com armadura preta e katana laranja.24 novas poses de combate e12 de invocações. Alguns normais ainda compartilham arte; não há centenas de quadros únicos. Cenário continua laboratório provisório.
 
-Os supers iniciais são ataques únicos com pausa, custo de barra e derrubada; não são ainda sequências cinematográficas confirmadas. Alguns ataques compartilham poses, e o agachamento/ataque aéreo precisa de mais quadros exclusivos. A aparência mira jogos clássicos 2D com identidade própria.
+## Validação e limites
 
-Arte de Simon atualizada com cabelo castanho ondulado e uniforme preto a partir das referências do usuário. Techblade mantém capuz, visor laranja, armadura preta, membros mecânicos e katana incandescente. O cenário permanece um laboratório simples.
-
-Rollback e menus de conexão vêm do motor fixado; a validação em redes distintas segue pendente. O controlador de teste sem hardware não faz parte da instalação do jogador.
-
+Execução nativa Linux, partida completa, nova partida pelo menu, servo/grab/super, dois controles SDL virtuais e dois pares rollback em loopback. Instalação/CLI Windows no workflow. Isso não comprova uma partida Windows com GPU real, controle físico, ergonomia ou Internet. Não foi feito balanceamento competitivo nem prova de ausência de todo infinito possível. Consulte docs/TESTES.md e docs/ONLINE.md; o aceite final A–D não é declarado completo.

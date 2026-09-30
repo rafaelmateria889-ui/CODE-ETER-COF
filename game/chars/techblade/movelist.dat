@@ -1,4 +1,4 @@
-TECHBLADE / PROTOTIPO 0.1
+TECHBLADE / PROTOTIPO 0.2
 
 X = soco leve   A = chute leve
 Y = soco forte  B = chute forte
@@ -13,5 +13,6 @@ Baixo, diagonal frente, frente + X : Investida Ignea
 Baixo, diagonal tras, tras + X : Corte de Pressao
 Frente, baixo, diagonal frente + X : Corte Ascendente
 Frente, baixo, diagonal frente + A : Corte Ascendente
+Baixo, diagonal tras, tras + A/B : Passo Fantasma
 Duplo quarto de lua para frente + X+Y : super (1 barra)
 Leve > forte > especial: cancela ao acertar/defender.

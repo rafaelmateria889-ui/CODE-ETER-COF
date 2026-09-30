@@ -156,6 +156,13 @@ procedural_fighter = fighter
 _atlases = {}
 _frames = {}
 def fighter(kind,action='idle',t=0):
+    if action in ('cpunch','airstrike'):
+        row=(0 if action=='cpunch' else 1)+(2 if kind=='techblade' else 0)
+        phase=0 if t<.08 else 1 if t<.22 else 2 if t<.35 else 3 if t<.65 else 4 if t<.85 else 5
+        return atlas_cell('combat-extra.png',row*6+phase)
+    if action in ('servant','tentacle'):
+        idx=(0 if action=='servant' else 6)+min(5,int(t*6))
+        return atlas_cell('summons.png',idx)
     path=ROOT/'assets/source'/('simon-v2.png' if kind=='simon' else f'{kind}.png')
     if not path.exists():
         out=Image.new('RGB',(384,256),KEY);out.paste(procedural_fighter(kind,action,t),(64,0));return out
@@ -203,6 +210,20 @@ def fighter(kind,action='idle',t=0):
     if action=='teleport' and kind=='simon':ring(ImageDraw.Draw(out),168,153,t,69)
     return out
 
+def atlas_cell(filename,idx):
+    key=(filename,idx)
+    if key not in _frames:
+        path=ROOT/'assets/source'/filename
+        if not path.exists():return Image.new('RGB',(384,256),KEY)
+        atlas=Image.open(path).convert('RGBA')
+        cw=atlas.width//6
+        cell=atlas.crop(((idx%6)*cw,(idx//6)*cw,(idx%6+1)*cw,(idx//6+1)*cw))
+        rgba=cell.resize((174,174),Image.Resampling.LANCZOS)
+        mask=rgba.getchannel('A').point(lambda a:255 if a>=100 else 0)
+        out=Image.new('RGB',(384,256),KEY);out.paste(rgba.convert('RGB'),(81,64),mask)
+        _frames[key]=out
+    return _frames[key].copy()
+
 def sff(path,entries):
     """Each sprite contains its own indexed PCX palette; index 0 is transparent."""
     encoded=[]; seen={}
@@ -246,19 +267,24 @@ def sound(path):
 ANIMS={0:('idle',12,5),5:('idle',2,2),10:('crouch',2,2),11:('crouch',4,7),12:('idle',2,2),20:('walk',12,3),21:('walk',12,4),40:('crouch',2,2),41:('jump',6,5),42:('jump',6,5),43:('jump',6,5),47:('crouch',2,3),100:('run',12,2),105:('jump',6,3),120:('guard',2,2),130:('guard',4,5),131:('cguard',4,5),132:('guard',4,5),140:('idle',2,2),150:('guard',3,3),151:('guard',3,3),152:('cguard',3,3),153:('cguard',3,3),154:('guard',3,3),170:('victory',6,8),180:('victory',6,8),181:('victory',6,8),190:('idle',8,5),195:('idle',8,5),200:('punch',7,3),210:('kick',9,3),220:('heavy',11,3),230:('hkick',12,3),400:('punch',7,3),410:('low',9,3),420:('heavy',11,3),430:('low',12,3),600:('punch',7,3),610:('kick',9,3),620:('heavy',11,3),630:('hkick',12,3),800:('throw',9,3),810:('throw',12,3),1000:('portal',14,3),1100:('teleport',12,3),1200:('upper',14,3),1300:('throw',14,3),3000:('super',22,3)}
 for a in [5000,5001,5002,5010,5011,5012,5020,5021,5022,5030,5035,5040,5050,5060,5070,5080,5081,5090,5100,5101,5102,5110,5120,5150,5200,5210,5300]:ANIMS[a]=('down' if a in [5100,5101,5102,5110,5150] else 'hurt',3,4)
 
+for a in [400,420]:ANIMS[a]=('cpunch',10 if a==420 else 7,3)
+for a in [600,610,620,630]:ANIMS[a]=('airstrike',12,3)
+ANIMS.update({1310:('throw',16,3),1400:('portal',18,3),1450:('servant',22,3),1460:('tentacle',12,3),3100:('super',19,3)})
+
 def build_char(kind):
-    entries=[];air=['; Generated from original procedural animation source.']
+    entries=[];air=['; Generated from original GPT Image atlases; effects composited by the build.']
     for action,(pose,n,duration) in ANIMS.items():
         air.append(f'\n[Begin Action {action}]')
         # 640x360 local coordinates; sprites share this geometry.
-        low=action in [10,11,410,430,131,152,153]
+        low=action in [10,11,400,410,420,430,131,152,153]
         air+=['Clsn2Default: 2',f'Clsn2[0] = -18, {-99 if low else -143}, 22, -62',f'Clsn2[1] = -21, -63, 24, 0']
-        attacking=action in [200,210,220,230,400,410,420,430,600,610,620,630,800,1000,1200,1300,3000]
+        attacking=action in [200,210,220,230,400,410,420,430,600,610,620,630,800,1000,1200,1300,3000,1450]
         for i in range(n):
             # Active windows sit in the extended poses, rather than startup.
-            if attacking and i in ([3,4,5] if action in [1000,1200,1300,3000] else [2,3]):
+            active=([11,12,13] if action==1450 else [3,4,5] if action in [1000,1200,1300,3000] else [3,4] if action in [210,410,610] else [4,5] if action in [220,230,420,430,620,630] else [2,3])
+            if attacking and i in active:
                 reach=114 if action in [1000,3000] else 92 if action in [220,620] and kind=='techblade' else 80 if action in [230,630] else 66
-                top,bottom=(-35,-5) if action in [410,430] else (-178,-60) if action==1200 else (-128,-70)
+                top,bottom=(-35,-5) if action in [410,430] else (-178,-60) if action==1200 else (-90,-40) if action in [400,420,1450] else (-128,-70)
                 air+=['Clsn1: 1',f'Clsn1[0] = 8, {top}, {reach}, {bottom}']
             entries.append((action,i,fighter(kind,pose,i/max(1,n-1)),168,226))
             air.append(f'{action}, {i}, 0, 0, {duration}')

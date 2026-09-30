@@ -14,7 +14,7 @@
       "state": 210,
       "button": "a",
       "stance": "S",
-      "startup": 6,
+      "startup": 9,
       "active": 6,
       "total": 27,
       "damage": 52,
@@ -24,7 +24,7 @@
       "state": 220,
       "button": "y",
       "stance": "S",
-      "startup": 6,
+      "startup": 12,
       "active": 6,
       "total": 33,
       "damage": 78,
@@ -34,7 +34,7 @@
       "state": 230,
       "button": "b",
       "stance": "S",
-      "startup": 6,
+      "startup": 12,
       "active": 6,
       "total": 36,
       "damage": 92,
@@ -54,7 +54,7 @@
       "state": 410,
       "button": "a",
       "stance": "C",
-      "startup": 6,
+      "startup": 9,
       "active": 6,
       "total": 27,
       "damage": 52,
@@ -64,7 +64,7 @@
       "state": 420,
       "button": "y",
       "stance": "C",
-      "startup": 6,
+      "startup": 12,
       "active": 6,
       "total": 33,
       "damage": 78,
@@ -74,7 +74,7 @@
       "state": 430,
       "button": "b",
       "stance": "C",
-      "startup": 6,
+      "startup": 12,
       "active": 6,
       "total": 36,
       "damage": 92,
@@ -94,7 +94,7 @@
       "state": 610,
       "button": "a",
       "stance": "A",
-      "startup": 6,
+      "startup": 9,
       "active": 6,
       "total": 27,
       "damage": 52,
@@ -104,7 +104,7 @@
       "state": 620,
       "button": "y",
       "stance": "A",
-      "startup": 6,
+      "startup": 12,
       "active": 6,
       "total": 33,
       "damage": 78,
@@ -114,7 +114,7 @@
       "state": 630,
       "button": "b",
       "stance": "A",
-      "startup": 6,
+      "startup": 12,
       "active": 6,
       "total": 36,
       "damage": 92,
@@ -126,15 +126,15 @@
       "startup": 9,
       "active": 9,
       "total": 42,
-      "damage": 100
+      "damage": 90
     },
     {
       "state": 1200,
       "name": "Ruptura Ascendente",
       "startup": 9,
       "active": 9,
-      "total": 42,
-      "damage": 125
+      "total": 48,
+      "damage": 115
     },
     {
       "state": 3000,
@@ -142,7 +142,74 @@
       "startup": 9,
       "active": 9,
       "total": 66,
-      "damage": 255
+      "damage": 45,
+      "confirmedDamage": 265,
+      "confirmState": 3100
+    },
+    {
+      "state": 1100,
+      "name": "Fenda de Entrada",
+      "total": 36
+    },
+    {
+      "state": 800,
+      "name": "Agarrao normal",
+      "startup": 6,
+      "total": 32,
+      "damage": 135
+    },
+    {
+      "state": 1300,
+      "name": "Abraco do Abismo",
+      "startup": 9,
+      "total": 42,
+      "damage": 175
+    },
+    {
+      "state": 1301,
+      "name": "Abraco forte",
+      "startup": 12,
+      "total": 48,
+      "damage": 195
+    },
+    {
+      "state": 1400,
+      "name": "Servo da Fenda",
+      "startup": 21,
+      "total": 54,
+      "helperStrikeAt": 53,
+      "damage": 60,
+      "cooldown": 120
+    },
+    {
+      "state": 1001,
+      "name": "Mao do Limiar / forte",
+      "startup": 9,
+      "active": 9,
+      "total": 51,
+      "damage": 108
+    },
+    {
+      "state": 1101,
+      "name": "Fenda de Entrada / forte",
+      "total": 45
+    },
+    {
+      "state": 1201,
+      "name": "Ruptura Ascendente / forte",
+      "startup": 9,
+      "active": 9,
+      "total": 57,
+      "damage": 138
+    },
+    {
+      "state": 1401,
+      "name": "Servo da Fenda / forte",
+      "startup": 21,
+      "total": 63,
+      "helperStrikeAt": 53,
+      "damage": 60,
+      "cooldown": 120
     }
   ],
   "techblade": [
@@ -160,7 +227,7 @@
       "state": 210,
       "button": "a",
       "stance": "S",
-      "startup": 6,
+      "startup": 9,
       "active": 6,
       "total": 27,
       "damage": 52,
@@ -170,7 +237,7 @@
       "state": 220,
       "button": "y",
       "stance": "S",
-      "startup": 6,
+      "startup": 12,
       "active": 6,
       "total": 33,
       "damage": 78,
@@ -180,7 +247,7 @@
       "state": 230,
       "button": "b",
       "stance": "S",
-      "startup": 6,
+      "startup": 12,
       "active": 6,
       "total": 36,
       "damage": 92,
@@ -200,7 +267,7 @@
       "state": 410,
       "button": "a",
       "stance": "C",
-      "startup": 6,
+      "startup": 9,
       "active": 6,
       "total": 27,
       "damage": 52,
@@ -210,7 +277,7 @@
       "state": 420,
       "button": "y",
       "stance": "C",
-      "startup": 6,
+      "startup": 12,
       "active": 6,
       "total": 33,
       "damage": 78,
@@ -220,7 +287,7 @@
       "state": 430,
       "button": "b",
       "stance": "C",
-      "startup": 6,
+      "startup": 12,
       "active": 6,
       "total": 36,
       "damage": 92,
@@ -240,7 +307,7 @@
       "state": 610,
       "button": "a",
       "stance": "A",
-      "startup": 6,
+      "startup": 9,
       "active": 6,
       "total": 27,
       "damage": 52,
@@ -250,7 +317,7 @@
       "state": 620,
       "button": "y",
       "stance": "A",
-      "startup": 6,
+      "startup": 12,
       "active": 6,
       "total": 33,
       "damage": 78,
@@ -260,7 +327,7 @@
       "state": 630,
       "button": "b",
       "stance": "A",
-      "startup": 6,
+      "startup": 12,
       "active": 6,
       "total": 36,
       "damage": 92,
@@ -272,15 +339,15 @@
       "startup": 9,
       "active": 9,
       "total": 42,
-      "damage": 100
+      "damage": 90
     },
     {
       "state": 1200,
       "name": "Corte Ascendente",
       "startup": 9,
       "active": 9,
-      "total": 42,
-      "damage": 125
+      "total": 48,
+      "damage": 115
     },
     {
       "state": 3000,
@@ -288,7 +355,7 @@
       "startup": 9,
       "active": 9,
       "total": 66,
-      "damage": 255
+      "damage": 45
     },
     {
       "state": 1300,
@@ -296,7 +363,52 @@
       "startup": 9,
       "active": 9,
       "total": 42,
-      "damage": 90
+      "damage": 90,
+      "confirmedDamage": 265,
+      "confirmState": 3100
+    },
+    {
+      "state": 1100,
+      "name": "Passo Fantasma",
+      "total": 36
+    },
+    {
+      "state": 800,
+      "name": "Agarrao normal",
+      "startup": 6,
+      "total": 32,
+      "damage": 135
+    },
+    {
+      "state": 1001,
+      "name": "Investida Ignea / forte",
+      "startup": 9,
+      "active": 9,
+      "total": 51,
+      "damage": 108
+    },
+    {
+      "state": 1101,
+      "name": "Passo Fantasma / forte",
+      "total": 45
+    },
+    {
+      "state": 1201,
+      "name": "Corte Ascendente / forte",
+      "startup": 9,
+      "active": 9,
+      "total": 57,
+      "damage": 138
+    },
+    {
+      "state": 1301,
+      "name": "Corte de Pressao / forte",
+      "startup": 9,
+      "active": 9,
+      "total": 51,
+      "damage": 108,
+      "confirmedDamage": 265,
+      "confirmState": 3100
     }
   ]
 }
